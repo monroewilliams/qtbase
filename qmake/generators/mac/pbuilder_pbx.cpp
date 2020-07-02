@@ -409,6 +409,9 @@ public:
                 return true;
         }
 
+	    if (file.endsWith(QLatin1String(".metal")))
+            return true;
+
         return false;
     }
 };
@@ -473,6 +476,8 @@ static QString xcodeFiletypeForFilename(const QString &filename)
         return QStringLiteral("sourcecode.cpp.objcpp");
     if (filename.endsWith(Option::objc_ext))
         return QStringLiteral("sourcecode.c.objc");
+    if (filename.endsWith(QLatin1String(".metal")))
+        return QStringLiteral("sourcecode.metal");
     if (filename.endsWith(QLatin1String(".framework")))
         return QStringLiteral("wrapper.framework");
     if (filename.endsWith(QLatin1String(".a")))
